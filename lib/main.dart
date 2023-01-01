@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:real_time_vehicle_tracking_app/tracking_cubit.dart';
 import 'package:real_time_vehicle_tracking_app/tracking_screen.dart';
+import 'package:real_time_vehicle_tracking_app/tracking_service.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  final trackingService = TrackingService();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const TrackingScreen(),
+      home: BlocProvider(
+        create: (context) => TrackingCubit(trackingService),
+        child: const TrackingScreen(),
+      ),
     );
   }
 }

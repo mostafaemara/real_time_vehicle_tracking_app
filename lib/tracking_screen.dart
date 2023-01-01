@@ -17,7 +17,7 @@ class TrackingScreen extends StatefulWidget {
 class _TrackingScreenState extends State<TrackingScreen> {
   late final BitmapDescriptor bitMap;
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
+  static const CameraPosition _cameraPostion = CameraPosition(
     target: LatLng(
       30.372882,
       30.500178,
@@ -45,12 +45,10 @@ class _TrackingScreenState extends State<TrackingScreen> {
       body: SafeArea(
         child: BlocBuilder<TrackingCubit, List<Vehicle>>(
           builder: (context, state) => GoogleMap(
+            myLocationButtonEnabled: false,
             mapType: MapType.terrain,
-            initialCameraPosition: _kGooglePlex,
+            initialCameraPosition: _cameraPostion,
             markers: _mapViechleToMarks(state),
-            onMapCreated: (GoogleMapController controller) {
-              //   controller.complete(controller);
-            },
           ),
         ),
       ),

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -17,7 +15,7 @@ class TrackingScreen extends StatefulWidget {
 class _TrackingScreenState extends State<TrackingScreen> {
   late final BitmapDescriptor bitMap;
 
-  static const CameraPosition _cameraPostion = CameraPosition(
+  static const CameraPosition _cameraPosition = CameraPosition(
     target: LatLng(
       30.372882,
       30.500178,
@@ -39,23 +37,21 @@ class _TrackingScreenState extends State<TrackingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Completer<GoogleMapController> controller =
-        Completer<GoogleMapController>();
     return Scaffold(
       body: SafeArea(
         child: BlocBuilder<TrackingCubit, List<Vehicle>>(
           builder: (context, state) => GoogleMap(
             myLocationButtonEnabled: false,
             mapType: MapType.terrain,
-            initialCameraPosition: _cameraPostion,
-            markers: _mapViechleToMarks(state),
+            initialCameraPosition: _cameraPosition,
+            markers: _mapVehicleToMarks(state),
           ),
         ),
       ),
     );
   }
 
-  Set<Marker> _mapViechleToMarks(List<Vehicle> vehicles) {
+  Set<Marker> _mapVehicleToMarks(List<Vehicle> vehicles) {
     final markers = <Marker>{};
     for (final v in vehicles) {
       markers.add(Marker(

@@ -1,0 +1,3 @@
+[submodule "real_time_vehicle_tracking_server"]
+	path = real_time_vehicle_tracking_server
+	url = https://github.com/mostafaemara/real_time_vehicle_tracking_server

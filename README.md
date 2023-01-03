@@ -2,14 +2,17 @@
 
 Real Time Vehicle Tracking App with web socket Built using Flutter
 
-![Design image](resources/demo.gif)
+<p float="left">
+  <img src="resources/demo.gif" width="400" />
+  <img src="resources/demo.png" width="400" />
+</p>
 
 ## Description
 
 This is a demo project provide the idea how real time tracking work based on web socket protocol,
 i used Bloc pattern to provide a more realistic example.
 
-### The tracking process consist of three main elements.
+### The tracking process consist of three main elements
 
 ![Design image](resources/connection_digram.png)
 
